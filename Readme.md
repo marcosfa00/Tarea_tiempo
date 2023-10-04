@@ -23,3 +23,18 @@ esto nos devolverá cuanto tiempo ha estado activa la aplicación.
 
             totalTimeActive =  endTime - startTime
 
+
+Para el siguiente apartado que muesra esto en la interfaz hacemos la siguiente función:
+
+           fun updateUI(){
+       var minutos = ((totalTimeActive / 60000).toInt())
+        Toast.makeText(this, "El tiempo activo hasta ahora es de: ${totalTimeActive / 60000}min ${(totalTimeActive / 1000) - (60 * minutos)}s",Toast.LENGTH_LONG).show()
+    }
+
+
+Esta funcion la debemos llamar desde algun sitio para poder ejecutarla y que nos muestre el mensaje, para ello creamos la función **onResume()**
+
+     override fun onResume() {
+        super.onResume()
+        updateUI()
+    }

@@ -2,6 +2,7 @@ package com.example.tarea_tiempo_activa
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,11 +32,21 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Greeting("Android" + totalTimeActive)
+
                 }
             }
         }
     }
 
+    fun updateUI(){
+       var minutos = ((totalTimeActive / 60000).toInt())
+        Toast.makeText(this, "El tiempo activo hasta ahora es de: ${totalTimeActive / 60000}min ${(totalTimeActive / 1000) - (60 * minutos)}s",Toast.LENGTH_LONG).show()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateUI()
+    }
     override fun onStart() {
         super.onStart()
         Log.d(TAG,"Función onStart")
@@ -61,6 +72,8 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!" + "El tiempo que ha estado activa la aplicación anteriormente es: " + totalTimeActive ,
         modifier = modifier
+
+
     )
 }
 
