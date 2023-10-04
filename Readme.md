@@ -21,5 +21,5 @@ Una vez hecho esto, **¿CÓMO OBTENEMOS EL TIEMPO QUE HA ESTADO ACTIVA LA APLICA
 Bien, pues es muy sencillo, solo debemos **restar** del tiempo de inicio de la aplicación, el tiempo actual en el que entra en estdo de pausa,
 esto nos devolverá cuanto tiempo ha estado activa la aplicación.
 
-          totalTimeActive = startTime -endTime
+            totalTimeActive =  endTime - startTime
 

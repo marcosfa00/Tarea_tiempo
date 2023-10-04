@@ -13,6 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.tarea_tiempo_activa.ui.theme.Tarea_tiempo_activaTheme
 
+val TAG = "Estado"
+var startTime: Long = 0L
+var totalTimeActive: Long = 0L
 class MainActivity : ComponentActivity() {
     val TAG = "Estado"
     var startTime: Long = 0L
@@ -27,7 +30,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    Greeting("Android" + totalTimeActive)
                 }
             }
         }
@@ -43,7 +46,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onPause() {
         var endTime: Long = System.currentTimeMillis()
-       totalTimeActive = startTime -endTime
+       totalTimeActive =  endTime - startTime
 
         super.onPause()
         Log.d(TAG,"Función onPause, ha estado activa "+ totalTimeActive + " ms")
@@ -56,7 +59,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
-        text = "Hello $name!",
+        text = "Hello $name!" + "El tiempo que ha estado activa la aplicación anteriormente es: " + totalTimeActive ,
         modifier = modifier
     )
 }
